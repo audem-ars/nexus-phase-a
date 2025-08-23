@@ -1,7 +1,8 @@
+import os, uuid, datetime, sqlite3
 from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse
-import uuid, datetime, sqlite3, os
 
+# SQLite path inside Render’s free disk
 DB_FILE = os.getenv("DB_FILE", "/app/data/nexus.db")
 os.makedirs("/app/data", exist_ok=True)
 conn = sqlite3.connect(DB_FILE, check_same_thread=False)
