@@ -1,0 +1,8 @@
+#! 0-nexus-phase-a-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: nexus-phase-a
+    labels:
+        com.docker.compose.project: nexus-phase-a

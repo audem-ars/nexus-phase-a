@@ -1,0 +1,18 @@
+#! kustomization.yaml
+# Generated code, do not edit
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - 0-nexus-phase-a-namespace.yaml
+    - bridge-deployment.yaml
+    - bridge-expose.yaml
+    - bridge-service.yaml
+    - default-network-policy.yaml
+    - minio-deployment.yaml
+    - minio-expose.yaml
+    - minio-service.yaml
+    - postgres-deployment.yaml
+    - postgres-expose.yaml
+    - postgres-service.yaml
+    - redis-deployment.yaml
+    - redis-expose.yaml

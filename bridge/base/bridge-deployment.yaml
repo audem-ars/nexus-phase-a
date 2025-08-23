@@ -1,0 +1,32 @@
+#! bridge-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: bridge
+    namespace: nexus-phase-a
+    labels:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: bridge
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: nexus-phase-a
+            com.docker.compose.service: bridge
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: nexus-phase-a
+                com.docker.compose.service: bridge
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: bridge
+                  image: nexus-phase-a-bridge
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - name: bridge-8000
+                      containerPort: 8000

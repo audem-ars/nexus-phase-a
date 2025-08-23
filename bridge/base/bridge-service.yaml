@@ -1,0 +1,23 @@
+# check if there is at least one published port
+
+#! bridge-service.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: bridge-published
+    namespace: nexus-phase-a
+    labels:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: bridge
+spec:
+    selector:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: bridge
+    ports:
+        - name: bridge-8000
+          port: 8000
+          protocol: TCP
+          targetPort: bridge-8000
+
+# check if there is at least one published port

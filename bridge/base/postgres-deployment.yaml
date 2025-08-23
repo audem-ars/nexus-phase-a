@@ -1,0 +1,46 @@
+#! postgres-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: postgres
+    namespace: nexus-phase-a
+    labels:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: postgres
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: nexus-phase-a
+            com.docker.compose.service: postgres
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: nexus-phase-a
+                com.docker.compose.service: postgres
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: postgres
+                  image: postgres:15
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - name: POSTGRES_DB
+                      value: "nexusdb"
+                    - name: POSTGRES_PASSWORD
+                      value: "nexuspass"
+                    - name: POSTGRES_USER
+                      value: "nexus"
+                  ports:
+                    - name: postgres-5432
+                      containerPort: 5432
+                  volumeMounts:
+                    - name: docker-entrypoint-initdb-d-init-sql
+                      mountPath: /docker-entrypoint-initdb.d/init.sql
+            volumes:
+                - name: docker-entrypoint-initdb-d-init-sql
+                  hostPath:
+                    path: /Users/papigringo/Desktop/nexus-phase-a/infra/init.sql

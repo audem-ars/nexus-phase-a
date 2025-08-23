@@ -1,0 +1,18 @@
+#! bridge-expose.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: bridge
+    namespace: nexus-phase-a
+    labels:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: bridge
+spec:
+    selector:
+        com.docker.compose.project: nexus-phase-a
+        com.docker.compose.service: bridge
+    ports:
+        - name: bridge-8000
+          port: 8000
+          targetPort: bridge-8000
