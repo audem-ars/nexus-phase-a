@@ -4,7 +4,6 @@ import uuid, datetime, sqlite3, os
 
 DB_FILE = os.getenv("DB_FILE", "/app/data/nexus.db")
 os.makedirs("/app/data", exist_ok=True)
-
 conn = sqlite3.connect(DB_FILE, check_same_thread=False)
 conn.execute(
     "CREATE TABLE IF NOT EXISTS jobs "
