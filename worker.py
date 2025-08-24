@@ -1,6 +1,7 @@
 import sqlite3, uuid, datetime, os, time
 from PIL import Image, ImageDraw
 
+os.makedirs("/app/data", exist_ok=True)
 DB_FILE = "/app/data/nexus.db"
 conn = sqlite3.connect(DB_FILE, check_same_thread=False)
 
